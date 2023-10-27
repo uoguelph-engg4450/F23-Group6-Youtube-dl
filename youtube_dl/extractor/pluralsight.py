@@ -112,7 +112,7 @@ query BootstrapPlayer {
 
 class PluralsightIE(PluralsightBaseIE):
     IE_NAME = 'pluralsight'
-    _VALID_URL = r'https?://(?:(?:www|app)\.)?pluralsight\.com/(?:training/)?player\?'
+    _VALID_URL = r'https?://(?:(?:www|app)\.)?pluralsight\.com/(?:training/)?course-player\?'
     _LOGIN_URL = 'https://app.pluralsight.com/id/'
 
     _NETRC_MACHINE = 'pluralsight'
