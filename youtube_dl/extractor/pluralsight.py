@@ -435,7 +435,7 @@ query viewClip {
             'formats': formats,
             'subtitles': subtitles,
         }
-class PluralsightIECoursePlayer(PluralsightIE):
+class PluralsightCoursePlayerIE(PluralsightIE):
     IE_NAME = 'pluralsight:cp'
     _VALID_URL = r'https?://(?:(?:www|app)\.)?pluralsight\.com/(?:training/)?course-player\?'
 

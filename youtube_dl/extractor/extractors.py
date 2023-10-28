@@ -965,6 +965,7 @@ from .playvid import PlayvidIE
 from .playwire import PlaywireIE
 from .pluralsight import (
     PluralsightIE,
+    PluralsightCoursePlayerIE,
     PluralsightCourseIE,
 )
 from .podomatic import PodomaticIE
