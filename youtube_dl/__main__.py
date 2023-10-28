@@ -16,4 +16,4 @@ if __package__ is None and not hasattr(sys, 'frozen'):
 import youtube_dl
 
 if __name__ == '__main__':
-    youtube_dl.main(["--no-check-certificate", "https://app.pluralsight.com/course-player?clipId=2c6f7084-9ffd-48ce-b706-a6cf1a3c3926"])
+    youtube_dl.main()
