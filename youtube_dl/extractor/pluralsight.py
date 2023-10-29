@@ -435,6 +435,8 @@ query viewClip {
             'formats': formats,
             'subtitles': subtitles,
         }
+
+
 class PluralsightCoursePlayerIE(PluralsightIE):
     IE_NAME = 'pluralsight:cp'
     _VALID_URL = r'https?://(?:(?:www|app)\.)?pluralsight\.com/(?:training/)?course-player\?'
@@ -442,9 +444,9 @@ class PluralsightCoursePlayerIE(PluralsightIE):
     _TESTS = [{
         'url': 'https://app.pluralsight.com/course-player?clipId=0cc6b1c6-9cbf-47b8-8258-f9a5588afe67',
         'only_matching': True
-    },
-        {'url': 'https://app.pluralsight.com/course-player?clipId=43862000-90db-4ca6-96ec-38acdd8348ef',
-         'only_matching': True
+    }, {
+        'url': 'https://app.pluralsight.com/course-player?clipId=43862000-90db-4ca6-96ec-38acdd8348ef',
+        'only_matching': True
     }]
 
 
