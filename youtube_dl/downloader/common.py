@@ -156,6 +156,12 @@ class FileDownloader(object):
         multiplier = 1024.0 ** 'bkmgtpezy'.index(matchobj.group(2).lower())
         return int(round(number * multiplier))
 
+    @staticmethod
+    def concat_speed_str(msg, s):
+        """Add download speed to download message."""
+        msg += ' at %(_speed_str)s'
+        return msg
+
     def to_screen(self, *args, **kargs):
         self.ydl.to_screen(*args, **kargs)
 
@@ -269,9 +275,8 @@ class FileDownloader(object):
                     msg_template += ' in approx. %(_elapsed_str)s'
                     s['speed'] = self.calc_speed(0, s['elapsed'], s['total_bytes'])
                     s['_speed_str'] = self.format_speed(s['speed'])
-                    msg_template += ' at %(_speed_str)s'
-                self._report_progress_status(
-                    msg_template % s, is_last_line=True)
+                    msg_template = self.concat_speed_str(msg_template, s)
+                self._report_progress_status(msg_template % s, is_last_line=True)
 
         if self.params.get('noprogress'):
             return
