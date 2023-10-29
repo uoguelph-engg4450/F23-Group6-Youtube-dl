@@ -16,6 +16,7 @@ from youtube_dl.extractor import (
     FacebookIE,
     gen_extractors,
     YoutubeIE,
+    PluralsightCoursePlayerIE,
 )
 
 
@@ -73,6 +74,14 @@ class TestAllURLsMatching(unittest.TestCase):
     def test_facebook_matching(self):
         self.assertTrue(FacebookIE.suitable('https://www.facebook.com/Shiniknoh#!/photo.php?v=10153317450565268'))
         self.assertTrue(FacebookIE.suitable('https://www.facebook.com/cindyweather?fref=ts#!/photo.php?v=10152183998945793'))
+
+    def test_plural_sight_player_matching(self):
+        self.assertTrue(PluralsightCoursePlayerIE.suitable('https://app.pluralsight.com/course-player?clipId=2c6f7084-9ffd-48ce-b706-a6cf1a3c3926'))
+        self.assertTrue(PluralsightCoursePlayerIE.suitable('https://app.pluralsight.com/course-player?clipId=0d7835c4-842e-41cd-ba48-cd1162c310a2'))
+    
+    def test_plural_sight_player_not_matching(self):
+        self.assertFalse(PluralsightCoursePlayerIE.suitable('http://www.pluralsight.com/training/player?author=mike-mckeown&name=hosting-sql-server-windows-azure-iaas-m7-mgmt&mode=live&clip=3&course=hosting-sql-server-windows-azure-iaas'))
+        self.assertFalse(PluralsightCoursePlayerIE.suitable('https://app.pluralsight.com/training/player?course=angularjs-get-started&author=scott-allen&name=angularjs-get-started-m1-introduction&clip=0&mode=live'))
 
     def test_no_duplicates(self):
         ies = gen_extractors()
