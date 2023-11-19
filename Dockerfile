@@ -12,4 +12,5 @@ RUN cp bin/python3 bin/python
 RUN mkdir youtube-dl
 COPY ./ ./youtube-dl
 RUN cd youtube-dl && make install
+RUN apt-get install vim -y
 
