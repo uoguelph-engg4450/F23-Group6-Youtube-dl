@@ -8,6 +8,8 @@ import unittest
 import sys
 import os
 import subprocess
+
+from test.helper import FakeYDL, assertEqual
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 rootDir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -65,6 +67,14 @@ class TestVerboseOutput(unittest.TestCase):
         self.assertTrue(b'johnsmith' not in serr)
         self.assertTrue(b'-p' in serr)
         self.assertTrue(b'secret' not in serr)
+
+    def test_concat_avg_speed(self):
+        ydl = FakeYDL()
+        ydl.s['total_bytes'] = 1000;
+        ydl.s['elapsed'] = 1000;
+        msg = ydl.test_concat_avg_speed("",self.s);
+        correct_msg =  ' at ' + str(round(ydl.s['total_bytes'] / (ydl.s['elapsed'] * 1000000), 2)) + ' mBps';
+        assertEqual(msg,correct_msg)
 
 
 if __name__ == '__main__':
